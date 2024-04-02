@@ -1,14 +1,4 @@
 const typeDefs = `
-
-type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    addBook(title: String!, authors: [String], subject: String, isbn: String, image: String, price: Float): Book
-    addTransaction(purchaseDate: String!, sellerId: ID!, buyerId: ID!, book: ID!): Transaction
-    removeBook(_id: ID!): Book
-    updateBook(_id: ID!, sold: Boolean, price: Float): Book
-}
-
 type Book {
     _id: ID
     title: String
@@ -49,12 +39,33 @@ type Auth {
     user: User
 }
 
+input BookInput {
+    _id: ID
+    title: String
+    authors: [String]
+    subject: String
+    isbn: String
+    image: String
+    price: Float
+    user: User
+    sold: Boolean
+}
+
 type Query {
     books: [Book]
     book(_id: ID!): Book
     subjects: [Subject]
     subject(name: String!): Subject
     me: User
+}
+
+type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    addBook(bookData: BookInput!): Book
+    addTransaction(purchaseDate: String!, sellerId: ID!, buyerId: ID!, book: ID!): Transaction
+    removeBook(_id: ID!): Book
+    updateBook(_id: ID!, sold: Boolean, price: Float): Book
 }
 `;
 

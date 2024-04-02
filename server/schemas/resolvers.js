@@ -11,82 +11,108 @@ const resolvers = {
       throw AuthenticationError;
     },
     books: async () => {
-        return await Book.find()
+      return await Book.find()
     },
     book: async (parent, args) => {
-        return await Book.findById(args.id)
+      return await Book.findById(args.id)
     },
     subjects: async () => {
-        return await Subject.find()
+      return await Subject.find()
     },
     subject: async (parent, args) => {
-        const params = {};
+      const params = {};
 
-        if (subject) {
-            params.subject = subject;
-        }
-        return await Subject.find(params).populate('book')
+      if (subject) {
+        params.subject = subject;
+      }
+      return await Subject.find(params).populate('book')
     },
 
   },
-  
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user)
-      return {token, user};
+      return { token, user };
     },
     login: async (parent, { email, password }) => {
-        const user = await User.findOne({ email });
-  
-        if (!user) {
-          throw AuthenticationError;
-        }
-  
-        const correctPw = await user.isCorrectPassword(password);
-  
-        if (!correctPw) {
-          throw AuthenticationError;
-        }
-  
-        const token = signToken(user);
-        return { token, user };
-      },
+      const user = await User.findOne({ email });
 
+      if (!user) {
+        throw AuthenticationError;
+      }
 
-    saveBook: async (parent, { bookData }, context) => {
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(user);
+      return { token, user };
+    },
+    addBook: async (parent, { bookData }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
+        const newBook = await Book.create({ bookData })
+        const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
-            $addToSet: { savedBooks: bookData },
+            $addToSet: { books: bookData },
           },
           {
             new: true,
           }
         );
+        return { newBook, user }
       }
       throw AuthenticationError;
     },
-    removeBook: async (parent, { bookId }, context) => {
+    removeBook: async (parent, args, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
+        const book = await Book.findOneAndDelete(
+          { _id: args._id }
+        );
+        const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
-            $pull: { savedBooks: { bookId } },
+            $pull: { books: { _id } },
           },
           {
             new: true,
           }
         );
+
+        return { book, user };
       }
       throw AuthenticationError;
     },
-
-
-
-
-
+    updateBook: async (parent, { bookData }, context) => {
+      if (context.user) {
+        return await Book.findOneAndUpdate(
+          { _id: bookData._id },
+          { bookData },
+          {
+            new: true,
+          }
+        );
+      };
+      throw AuthenticationError;
+    },
+    addTransaction: async (parent, args, context) => {
+      if (context.user) {
+        const newTransaction = await Transaction.create({ args })
+        const book = await Book.findOneAndUpdate(
+          { _id: bookData._id },
+          { sold: true },
+          {
+            new: true,
+          }
+        );
+        return { newTransaction, book }
+      }
+      throw AuthenticationError;
+    },
   },
 };
 
