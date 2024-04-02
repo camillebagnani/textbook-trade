@@ -33,4 +33,17 @@ type Transaction {
     buyerId: User
     book: Book
 }
-`
+
+type Auth {
+    token: ID
+    user: User
+}
+
+type Query {
+    books: [Book]
+    book(_id: ID!): Book
+    subjects: [Subject]
+    subject(name: String!): Subject
+    me: User
+}
+`;
