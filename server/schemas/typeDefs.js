@@ -1,4 +1,14 @@
 const typeDefs = `
+
+type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    addBook(title: String!, authors: [String], subject: String, isbn: String, image: String, price: Float): Book
+    addTransaction(purchaseDate: String!, sellerId: ID!, buyerId: ID!, book: ID!): Transaction
+    removeBook(_id: ID!): Book
+    updateBook(_id: ID!, sold: Boolean, price: Float): Book
+}
+
 type Book {
     _id: ID
     title: String
@@ -47,3 +57,5 @@ type Query {
     me: User
 }
 `;
+
+module.exports = typeDefs;

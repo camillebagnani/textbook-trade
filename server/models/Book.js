@@ -20,6 +20,7 @@ const bookSchema = new Schema({
   },
   image: {
     type: String,
+    default: "https://via.placeholder.com/150",
   },
   price: {
     type: Number,
@@ -31,6 +32,7 @@ const bookSchema = new Schema({
   },
   sold: {
     type: Boolean,
+    default: false,
   },
 });
 
