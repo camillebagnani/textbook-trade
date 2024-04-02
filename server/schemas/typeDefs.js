@@ -47,7 +47,7 @@ input BookInput {
     isbn: String
     image: String
     price: Float
-    user: User
+    user: String
     sold: Boolean
 }
 
