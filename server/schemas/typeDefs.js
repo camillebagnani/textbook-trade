@@ -63,7 +63,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addBook(bookData: BookInput!): Book
-    addTransaction(purchaseDate: String!, sellerId: ID!, buyerId: ID!, book: ID!): Transaction
+    addTransaction(sellerId: ID!, buyerId: ID, book: ID!): Transaction
     removeBook(_id: ID!): Book
     updateBook(_id: ID!, sold: Boolean, price: Float): Book
 }

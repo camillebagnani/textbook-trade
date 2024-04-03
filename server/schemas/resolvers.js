@@ -69,6 +69,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     removeBook: async (parent, args, context) => {
+      const oldId = args._id
       if (context.user) {
         const book = await Book.findOneAndDelete(
           { _id: args._id }
@@ -76,11 +77,8 @@ const resolvers = {
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
-            $pull: { books: { _id } },
+            $pull: { books: { oldId } },
           },
-          {
-            new: true,
-          }
         );
 
         return { book, user };
@@ -104,7 +102,7 @@ const resolvers = {
       if (context.user) {
         const newTransaction = await Transaction.create({ args })
         const book = await Book.findOneAndUpdate(
-          { _id: bookData._id },
+          { _id: args._id },
           { sold: true },
           {
             new: true,
