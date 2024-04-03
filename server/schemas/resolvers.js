@@ -11,29 +11,28 @@ const resolvers = {
       throw AuthenticationError;
     },
     books: async () => {
-      return await Book.find()
+      return await Book.find();
     },
     book: async (parent, args) => {
-      return await Book.findById(args.id)
+      return await Book.findById(args._id);
     },
     subjects: async () => {
-      return await Subject.find()
+      return await Subject.find();
     },
     subject: async (parent, args) => {
-      const params = {};
+      //const params = {};
 
-      if (subject) {
-        params.subject = subject;
-      }
-      return await Subject.find(params).populate('book')
+      // if (args) {
+      //   params.subject = args;
+      // }
+      return await Subject.findById(args._id).populate("book");
     },
-
   },
 
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      const token = signToken(user)
+      const token = signToken(user);
       return { token, user };
     },
     login: async (parent, { email, password }) => {
@@ -64,21 +63,35 @@ const resolvers = {
             new: true,
           }
         );
+        const subject = await Subject.findOneAndUpdate(
+          { name: newBook.subject },
+          {
+            $addToSet: { books: newBook._id },
+          },
+          {
+            new: true,
+          }
+        );
         return newBook;
       }
       throw AuthenticationError;
     },
     removeBook: async (parent, args, context) => {
-      const oldId = args._id
+      const oldId = args._id;
+      const oldBook = await Book.findOne({ _id: oldId });
       if (context.user) {
-        const book = await Book.findOneAndDelete(
-          { _id: args._id }
-        );
+        const book = await Book.findOneAndDelete({ _id: args._id });
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
-            $pull: { books: { oldId } },
-          },
+            $pull: { books: oldId },
+          }
+        );
+        const subject = await Subject.findOneAndUpdate(
+          { name: oldBook.subject },
+          {
+            $pull: { books: oldId },
+          }
         );
 
         return { book, user };
@@ -88,7 +101,7 @@ const resolvers = {
     updateBook: async (parent, args, context) => {
       if (context.user) {
         return await Book.findOneAndUpdate(
-          { _id: args._id }, 
+          { _id: args._id },
           args,
 
           {
@@ -100,15 +113,22 @@ const resolvers = {
     },
     addTransaction: async (parent, args, context) => {
       if (context.user) {
-        const newTransaction = await Transaction.create({ args })
+        const newTransaction = await Transaction.create(
+          {
+            sellerId: args.sellerId,
+            buyerId: context.user._id,
+            book: args.book,
+          }
+        );
+        console.log(newTransaction);
         const book = await Book.findOneAndUpdate(
-          { _id: args._id },
+          { _id: args.book },
           { sold: true },
           {
             new: true,
           }
         );
-        return { newTransaction, book }
+        return { newTransaction, book };
       }
       throw AuthenticationError;
     },
