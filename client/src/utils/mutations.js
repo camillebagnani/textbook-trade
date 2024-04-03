@@ -27,6 +27,11 @@ export const ADD_BOOK = gql`
     addBook(bookInput: $bookInput) {
       _id
       title
+      authors
+      subject
+      isbn
+      image
+      price
     }
   }
 `;
