@@ -54,17 +54,17 @@ const resolvers = {
     },
     addBook: async (parent, { bookData }, context) => {
       if (context.user) {
-        const newBook = await Book.create({ bookData })
+        const newBook = await Book.create(bookData);
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
-            $addToSet: { books: bookData },
+            $addToSet: { books: newBook._id },
           },
           {
             new: true,
           }
         );
-        return { newBook, user }
+        return newBook;
       }
       throw AuthenticationError;
     },
