@@ -4,7 +4,7 @@ const { model, Schema } = mongoose;
 const bookSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    //required: true,
   },
   authors: [
     {
@@ -16,7 +16,7 @@ const bookSchema = new Schema({
   },
   isbn: {
     type: String,
-    required: true,
+    //required: true,
   },
   image: {
     type: String,
@@ -24,7 +24,7 @@ const bookSchema = new Schema({
   },
   price: {
     type: Number,
-    required: true,
+   // required: true,
   },
   user: {
     type: Schema.Types.ObjectId,
