@@ -87,16 +87,17 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    updateBook: async (parent, { bookData }, context) => {
+    updateBook: async (parent, args, context) => {
       if (context.user) {
         return await Book.findOneAndUpdate(
-          { _id: bookData._id },
-          { bookData },
+          { _id: args._id }, 
+          args,
+
           {
             new: true,
           }
         );
-      };
+      }
       throw AuthenticationError;
     },
     addTransaction: async (parent, args, context) => {
