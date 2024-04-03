@@ -55,7 +55,7 @@ type Query {
     books: [Book]
     book(_id: ID!): Book
     subjects: [Subject]
-    subject(name: String!): Subject
+    subject(_id: ID): Subject
     me: User
 }
 
