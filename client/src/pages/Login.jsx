@@ -1,30 +1,67 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
+import { LOGIN } from "../utils/mutations";
+
 function Login() {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [login, { error }] = useMutation(LOGIN);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await login({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+        },
+      });
+      const token = response.data.login.token;
+      Auth.login(token);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
   return (
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title mb-3">Login</h4>
-        <form>
-          <div class="mb-3">
-            <label for="emailInput" class="form-label">
+    <div className="card">
+      <div className="card-body">
+        <h4 className="card-title mb-3">Login</h4>
+        <form onSubmit={handleFormSubmit}>
+          <div className="mb-3">
+            <label htmlFor="emailInput" className="form-label">
               Email address
             </label>
             <input
+              name="email"
               type="email"
-              class="form-control"
+              className="form-control"
               id="emailInput"
+              onChange={handleChange}
             />
           </div>
-          <div class="mb-3">
-            <label for="passwordInput" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="passwordInput" className="form-label">
               Password
             </label>
             <input
+              name="password"
               type="password"
-              class="form-control"
+              className="form-control"
               id="passwordInput"
+              onChange={handleChange}
             />
           </div>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </form>

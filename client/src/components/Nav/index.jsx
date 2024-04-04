@@ -5,14 +5,14 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/user/:id">
+        <ul className="nav justify-content-end">
+          <li className="nav-item">
+            <a className="nav-link active" aria-current="page" href="/user/:id">
               Profile
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" onClick={() => Auth.logout()}>
+          <li className="nav-item">
+            <a className="nav-link" onClick={() => Auth.logout()}>
               Logout
             </a>
           </li>
@@ -20,14 +20,14 @@ function Nav() {
       );
     } else {
       return (
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/signup">
+        <ul className="nav justify-content-end">
+          <li className="nav-item">
+            <a className="nav-link active" aria-current="page" href="/signup">
               Signup
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">
+          <li className="nav-item">
+            <a className="nav-link" href="/login">
               Login
             </a>
           </li>
@@ -38,9 +38,9 @@ function Nav() {
 
   return (
     <header className="flex-row px-1 shadow-sm mb-5">
-      <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">
+      <nav className="navbar bg-body-tertiary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">
             <h1>
               <span role="img" aria-label="textbook">
                 📚
