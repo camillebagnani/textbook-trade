@@ -1,15 +1,7 @@
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
-import Cart from "../components/Cart";
-
-const Home = () => {
+function Home() {
   return (
-    <div className="container">
-      <CategoryMenu />
-      <ProductList />
-      <Cart />
-    </div>
-  );
-};
+    <h1>Home</h1>
+  )
+}
 
 export default Home;
