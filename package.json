@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "concurrently": "^8.2.2",
+    "jwt-decode": "^4.0.0",
     "mongoose": "^8.2.4"
   },
   "name": "project-3",
