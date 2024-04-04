@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Book from  "./pages/Book"
 import Success from "./pages/Success"
 import User from "./pages/User"
+// import BookListings from "./pages/BookListings"
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         path: '/book/:id',
         element: <Book />,
       },
+      // {
+      //   path: '/books',
+      //   element: <BookListings />,
+      // },
       {
         path: '/user/:id',
         element: <User />,
