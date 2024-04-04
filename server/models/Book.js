@@ -12,7 +12,9 @@ const bookSchema = new Schema({
     },
   ],
   subject: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Subject',
+    //required: true
   },
   isbn: {
     type: String,
