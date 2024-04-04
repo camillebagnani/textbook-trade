@@ -2,18 +2,8 @@ function Login() {
   return (
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title mb-3">Signup</h4>
+        <h4 class="card-title mb-3">Login</h4>
         <form>
-        <div class="mb-3">
-            <label for="usernameInput" class="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="usernameInput"
-            />
-          </div>
           <div class="mb-3">
             <label for="emailInput" class="form-label">
               Email address
