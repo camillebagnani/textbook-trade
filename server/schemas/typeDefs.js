@@ -3,7 +3,7 @@ type Book {
     _id: ID
     title: String
     authors: [String]
-    subject: String
+    subject: Subject
     isbn: String
     image: String
     price: Float
@@ -55,8 +55,9 @@ type Query {
     books: [Book]
     book(_id: ID!): Book
     subjects: [Subject]
-    subject(_id: ID): Subject
+    subject(subject: ID): [Book]
     me: User
+    transactions: [Transaction]
 }
 
 type Mutation {
