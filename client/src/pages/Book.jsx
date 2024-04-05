@@ -14,16 +14,7 @@ import AuthService from '../utils/auth';
 
 function Book() {
 
-  const [bookData, setBookData] = useState({
-    title: 'Harry Potter',
-    authors: ['JK Rowling'],
-    subject: 'Fantasy',
-    isbn: 'sklhalkh',
-    image: 'placeholder.com',
-    price: 20.00,
-    user: 'abc',
-    sold: false
-  });
+  
 
 
 
