@@ -36,7 +36,7 @@ query me {
 `;
 
 export const QUERY_ALL_BOOKS = gql`
-query books {
+query allBooks {
   books {
     title
     _id
