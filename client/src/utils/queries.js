@@ -4,32 +4,29 @@ export const QUERY_ME = gql`
 query me {
   me {
     _id
+    email
     username
     books {
+      _id
+      title
       authors
-      image
-      isbn
       price
       sold
-      subject
-      title
+      isbn
+      image
     }
     transactions {
+      _id
       book {
-        authors
-        image
-        isbn
-        price
-        sold
-        subject
+        _id
         title
       }
-      purchaseDate
-      sellerId {
+      buyerId {
         _id
         username
       }
-      buyerId {
+      purchaseDate
+      sellerId {
         _id
         username
       }
@@ -41,70 +38,71 @@ query me {
 export const QUERY_ALL_BOOKS = gql`
 query books {
   books {
+    title
+    _id
     authors
     image
     isbn
     price
     sold
-    subject
-    title
-    user {
-      username
-    }
-  }
-}`
-
-export const QUERY_ALL_SUBJECTS = gql `
-query subjects {
-  subjects {
-    name
-    books {
-      authors
-      image
-      isbn
-      price
-      sold
-      subject
-      title
-      user {
-        username
-      }
-    }
-  }
-}`
-;
-
-export const SINGLE_BOOK = gql`
-query book($id: ID!) {
-  book(_id: $id) {
-    authors
-    image
-    isbn
-    price
-    sold
-    subject
-    title
-    user {
-      username
+    subject {
+      _id
+      name
     }
   }
 }
 `
-export const SINGLE_SUBJECT = gql `
-query subject($name: String!) {
-  subject(name: $name) {
+
+export const SINGLE_BOOK = gql`
+query book($id: ID!) {
+  book(_id: $id) {
+    _id
+    authors
+    image
+    isbn
+    price
+    sold
+    title
+    user {
+      _id
+      username
+    }
+    subject {
+      _id
+      name
+    }
+  }
+}
+`
+
+export const QUERY_ALL_SUBJECTS = gql `
+query Subjects {
+  subjects {
+    _id
     name
-    books {
-      authors
-      image
-      isbn
-      price
-      sold
-      subject
-      title
-      user {
-        username
-      }
+  }
+}
+`
+;
+
+
+export const SINGLE_SUBJECT = gql `
+query subject($subject: ID) {
+  subject(subject: $subject) {
+    _id
+    title
+    price
+    subject {
+      _id
+      name
+    }
+    authors
+    image
+    isbn
+    sold
+    user {
+      _id
+      username
     }
   }
 }

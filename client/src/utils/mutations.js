@@ -23,17 +23,25 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_BOOK = gql`
-  mutation addBook($bookInput: BookInput) {
-    addBook(bookInput: $bookInput) {
+mutation addBook($bookData: BookInput!) {
+  addBook(bookData: $bookData) {
+    _id
+    authors
+    image
+    isbn
+    price
+    sold
+    title
+    user {
       _id
-      title
-      authors
-      subject
-      isbn
-      image
-      price
+      username
+    }
+    subject {
+      _id
+      name
     }
   }
+}
 `;
 
 export const REMOVE_BOOK = gql`
@@ -57,12 +65,22 @@ export const UPDATE_BOOK = gql`
 `;
 
 export const ADD_TRANSACTION = gql`
-  mutation addTransaction($purchaseDate: String!, $sellerId: ID!, $buyerId: ID!) {
-    addTransaction(purchaseDate: $purchaseDate, sellerId: $sellerId, buyerId: $buyerId) {
+mutation addTransaction($sellerId: ID!, $book: ID!) {
+  addTransaction(sellerId: $sellerId, book: $book) {
+    _id
+    purchaseDate
+    buyerId {
       _id
-      purchaseDate
-      sellerId
-      BuyerId
+      username
+    }
+    sellerId {
+      _id
+      username
+    }
+    book {
+      _id
+      title
     }
   }
+}
 `;

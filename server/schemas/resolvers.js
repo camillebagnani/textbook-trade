@@ -29,15 +29,14 @@ const resolvers = {
             }
           })
           ;
-        //populate transactions and books?
       }
       throw AuthenticationError;
     },
     books: async () => {
-      return await Book.find();
+      return await Book.find().populate('subject')
     },
     book: async (parent, args) => {
-      return await Book.findById(args._id);
+      return await Book.findById(args._id).populate('subject').populate('user');
     },
     subjects: async () => {
       return await Subject.find();
@@ -170,8 +169,7 @@ const resolvers = {
             $addToSet: { transactions: newTransaction._id },
           }
         )
-
-        return { newTransaction, book};
+        return  newTransaction ;
       }
       throw AuthenticationError;
     },
