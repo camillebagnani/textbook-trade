@@ -1,28 +1,31 @@
-import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
+import { LOGIN } from "../utils/mutations";
 
-function Login(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+function Login() {
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
+      const response = await login({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+        },
       });
-      const token = mutationResponse.data.login.token;
+      const token = response.data.login.token;
       Auth.login(token);
-    } catch (e) {
-      console.log('error', e);
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormState({
       ...formState,
       [name]: value,
@@ -30,40 +33,39 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
-
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+    <div className="card">
+      <div className="card-body">
+        <h4 className="card-title mb-3">Login</h4>
+        <form onSubmit={handleFormSubmit}>
+          <div className="mb-3">
+            <label htmlFor="emailInput" className="form-label">
+              Email address
+            </label>
+            <input
+              name="email"
+              type="email"
+              className="form-control"
+              id="emailInput"
+              onChange={handleChange}
+            />
           </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+          <div className="mb-3">
+            <label htmlFor="passwordInput" className="form-label">
+              Password
+            </label>
+            <input
+              name="password"
+              type="password"
+              className="form-control"
+              id="passwordInput"
+              onChange={handleChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

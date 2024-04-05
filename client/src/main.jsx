@@ -7,6 +7,11 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import NoMatch from "./pages/NoMatch.jsx";
 import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup";
+import Book from  "./pages/Book"
+import Success from "./pages/Success"
+import User from "./pages/User"
+// import BookListings from "./pages/BookListings"
 
 const router = createBrowserRouter([
   {
@@ -23,12 +28,24 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
         path: '/book/:id',
         element: <Book />,
       },
+      // {
+      //   path: '/books',
+      //   element: <BookListings />,
+      // },
       {
         path: '/user/:id',
         element: <User />,
+      },
+      {
+        path: '/success',
+        element: <Success />,
       },
     ],
   },
