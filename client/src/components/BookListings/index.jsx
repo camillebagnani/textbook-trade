@@ -3,8 +3,10 @@ function BookListings(props) {
   return (
     <div>
       <h1>Book Listings</h1>
+      {props.bookData.map((book) => (
+        <BookItem bookData={book} />
       
-      <BookItem bookData={props.bookData}/>
+      ))}
     </div>
   )
 }
