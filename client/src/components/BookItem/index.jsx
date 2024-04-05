@@ -13,13 +13,13 @@ import {
 
 
 function BookItem(props) {
-
-
+  
 
   return (
     <div>
       <Container>
         <h1>Book for Trade</h1>
+
         <h2>{props.bookData.title}</h2>
         <img src={props.bookData.image} alt={props.bookData.title} />
         <h3>Authors: {props.bookData.authors}</h3>
@@ -33,6 +33,8 @@ function BookItem(props) {
             Available for Purchase
           </Button>
         }
+        
+        
       </Container>
 
     </div>
