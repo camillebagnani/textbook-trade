@@ -28,12 +28,19 @@ const resolvers = {
               model: 'user'
             }
           })
+          .populate({
+            path: 'books',
+            populate: {
+              path: 'subject',
+              model: 'subject'
+            }
+          })
           ;
       }
       throw AuthenticationError;
     },
     books: async () => {
-      return await Book.find().populate('subject')
+      return await Book.find().populate('subject').populate('user')
     },
     book: async (parent, args) => {
       return await Book.findById(args._id).populate('subject').populate('user');
@@ -42,8 +49,7 @@ const resolvers = {
       return await Subject.find();
     },
     subject: async (parent, {subject}) => {
-
-      return await Book.find({subject: subject}).populate('subject');
+      return await Book.find({subject: subject}).populate('subject').populate('user');
     },
     transactions: async () => {
       return await Transaction.find()

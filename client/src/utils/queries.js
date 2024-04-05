@@ -14,6 +14,10 @@ query me {
       sold
       isbn
       image
+      subject {
+        _id
+        name
+      }
     }
     transactions {
       _id
