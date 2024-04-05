@@ -5,11 +5,11 @@ import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
 function Signup() {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (e) => {
-    e.preventDefualt();
+    e.preventDefault();
     const response = await addUser({
       variables: {
         username: formState.username,
@@ -18,6 +18,7 @@ function Signup() {
       },
     });
     const token = response.data.addUser.token;
+    console.log(token);
     Auth.login(token);
   };
 
