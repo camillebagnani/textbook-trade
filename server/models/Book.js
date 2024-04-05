@@ -5,20 +5,24 @@ const bookSchema = new Schema({
   title: {
     type: String,
     //required: true,
+    default: '',
   },
   authors: [
     {
       type: String,
+      default: '',
     },
   ],
   subject: {
     type: Schema.Types.ObjectId,
     ref: 'subject',
-    //required: true
+    //required: true,
+    default: '',
   },
   isbn: {
     type: String,
     //required: true,
+    default: '',
   },
   image: {
     type: String,
@@ -27,6 +31,7 @@ const bookSchema = new Schema({
   price: {
     type: Number,
    // required: true,
+   default: '',
   },
   user: {
     type: Schema.Types.ObjectId,
