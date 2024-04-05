@@ -8,18 +8,18 @@ const transactionSchema = new Schema({
     },
     sellerId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "user"
     },
     buyerId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "user"
     },
     book: {
         type: Schema.Types.ObjectId,
-        ref: 'Book'
+        ref: 'book'
     }
   });
   
-  const Transaction = mongoose.model('Transaction', transactionSchema);
+  const Transaction = model('transaction', transactionSchema);
   
   module.exports = Transaction;

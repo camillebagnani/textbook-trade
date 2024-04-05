@@ -9,6 +9,6 @@ const subjectSchema = new Schema({
   }
 });
 
-const Subject = model('Subject', subjectSchema);
+const Subject = model('subject', subjectSchema);
 
 module.exports = Subject;

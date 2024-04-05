@@ -12,7 +12,9 @@ const bookSchema = new Schema({
     },
   ],
   subject: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'subject',
+    //required: true
   },
   isbn: {
     type: String,
@@ -28,7 +30,7 @@ const bookSchema = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "user",
   },
   sold: {
     type: Boolean,
