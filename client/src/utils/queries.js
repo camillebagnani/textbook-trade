@@ -14,6 +14,10 @@ query me {
       sold
       isbn
       image
+      user {
+        _id
+        username
+      }
       subject {
         _id
         name
