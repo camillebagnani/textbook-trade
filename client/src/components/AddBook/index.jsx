@@ -12,6 +12,7 @@ function AddBook(props) {
     price: 0,
   });
   const [addBook] = useMutation(ADD_BOOK);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +29,8 @@ function AddBook(props) {
         },
       },
     });
-    console.log(response);
+    e.target.reset();
+    setSubmitted(true);
   };
 
   const handleChange = (e) => {
@@ -37,6 +39,7 @@ function AddBook(props) {
       ...formState,
       [name]: value,
     });
+    setSubmitted(false);
   };
 
   return (
@@ -117,8 +120,11 @@ function AddBook(props) {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className={ submitted ? "btn btn-primary d-none" : "btn btn-primary" }>
             Submit
+          </button>
+          <button type="button" className={ submitted ? "btn btn-success disabled" : "btn btn-success disabled d-none" }>
+            Success!
           </button>
         </form>
       </div>
