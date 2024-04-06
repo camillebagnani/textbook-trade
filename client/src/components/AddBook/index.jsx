@@ -29,6 +29,7 @@ function AddBook(props) {
       },
     });
     console.log(response);
+    props.handleRefetch()
   };
 
   const handleChange = (e) => {
