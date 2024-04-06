@@ -53,6 +53,10 @@ query allBooks {
       _id
       name
     }
+    user {
+      _id
+      username
+    }
   }
 }
 `

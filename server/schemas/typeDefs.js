@@ -2,7 +2,7 @@ const typeDefs = `
 type Book {
     _id: ID
     title: String
-    authors: [String]
+    authors: String
     subject: Subject
     isbn: String
     image: String
@@ -42,7 +42,7 @@ type Auth {
 input BookInput {
     _id: ID
     title: String
-    authors: [String]
+    authors: String
     subject: String
     isbn: String
     image: String

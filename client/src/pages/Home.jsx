@@ -6,7 +6,7 @@ import { QUERY_ALL_BOOKS } from "../utils/queries";
 function Home() {
   const { loading, data } = useQuery(QUERY_ALL_BOOKS);
   const bookData = data?.books || [];
-  console.log(bookData)
+  // console.log(bookData)
 
   // const [bookData, setBookData] = useState({
 
