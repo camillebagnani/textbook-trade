@@ -32,6 +32,8 @@ function AddBook(props) {
     });
     e.target.reset();
     setSubmitted(true);
+    console.log(response);
+    props.handleRefetch()
   };
 
   const handleChange = (e) => {

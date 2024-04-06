@@ -5,6 +5,8 @@ import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 // import AuthService from '../utils/auth';
 
 function BookItem(props) {
+  console.log("USERDATA", props.userData)
+  console.log("BOOKDATA", props.bookData)
   return (
     <div>
       <Container>
