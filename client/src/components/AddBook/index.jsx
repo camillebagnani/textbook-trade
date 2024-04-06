@@ -12,6 +12,8 @@ function AddBook(props) {
     price: 0,
   });
   const [addBook] = useMutation(ADD_BOOK);
+  const [submitted, setSubmitted] = useState(false);
+  const [addBookMenu, setBookMenu] = useState(false);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +30,8 @@ function AddBook(props) {
         },
       },
     });
+    e.target.reset();
+    setSubmitted(true);
     console.log(response);
     props.handleRefetch()
   };
@@ -38,12 +42,28 @@ function AddBook(props) {
       ...formState,
       [name]: value,
     });
+    setSubmitted(false);
+  };
+
+  const handleAddBook = () => {
+    if (addBookMenu) {
+      setBookMenu(false);
+    } else {
+      setBookMenu(true);
+    }
   };
 
   return (
     <div className="card">
-      <div className="card-body">
-        <h4 className="card-title mb-3">List a book</h4>
+      <button
+        className="btn btn-secondary"
+        type="button"
+        id="dropdownMenuButton"
+        onClick={handleAddBook}
+      >
+        List a book
+      </button>
+      <div className={addBookMenu ? "card-body" : "d-none"}>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-3">
             <label htmlFor="titleInput" className="form-label">
@@ -118,8 +138,21 @@ function AddBook(props) {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className={submitted ? "btn btn-primary d-none" : "btn btn-primary"}
+          >
             Submit
+          </button>
+          <button
+            type="button"
+            className={
+              submitted
+                ? "btn btn-success disabled"
+                : "btn btn-success disabled d-none"
+            }
+          >
+            Success!
           </button>
         </form>
       </div>
