@@ -6,6 +6,7 @@ import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 
 function BookItem(props) {
   console.log("USERDATA", props.userData)
+  console.log("BOOKDATA", props.bookData)
   return (
     <div>
       <Container>
@@ -17,7 +18,7 @@ function BookItem(props) {
         <h3>Subject: {props.bookData.subject.name}</h3>
         <h3>ISBN: {props.bookData.isbn}</h3>
         <h3>Price: ${props.bookData.price}</h3>
-        {/* <h3>Seller: {props.userData.me.username}</h3> */}
+        <h3>Seller: {props.bookData.user.username}</h3>
         {props.bookData.sold ? (
           <h3>No Longer Available</h3>
         ) : (
