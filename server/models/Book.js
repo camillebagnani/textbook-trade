@@ -5,24 +5,22 @@ const bookSchema = new Schema({
   title: {
     type: String,
     //required: true,
-    default: '',
+    default: "",
   },
-  authors: [
-    {
-      type: String,
-      default: '',
-    },
-  ],
+  authors: {
+    type: String,
+    default: "",
+  },
   subject: {
     type: Schema.Types.ObjectId,
-    ref: 'subject',
+    ref: "subject",
     //required: true,
-    default: '',
+    default: "",
   },
   isbn: {
     type: String,
     //required: true,
-    default: '',
+    default: "",
   },
   image: {
     type: String,
@@ -30,12 +28,12 @@ const bookSchema = new Schema({
   },
   price: {
     type: Number,
-   // required: true,
-   default: '',
+    // required: true,
+    default: "",
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'user',
+    ref: "user",
   },
   sold: {
     type: Boolean,
@@ -43,6 +41,6 @@ const bookSchema = new Schema({
   },
 });
 
-const Book = model('book', bookSchema)
+const Book = model("book", bookSchema);
 
 module.exports = Book;

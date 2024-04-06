@@ -1,20 +1,10 @@
-import { useState, useEffect } from 'react';
-import {
-  Container,
-  Col,
-  Form,
-  Button,
-  Card,
-  Row
-} from 'react-bootstrap';
+import { useState, useEffect } from "react";
+import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 // import { useQuery } from '@apollo/client';
 // import { QUERY_ALL_BOOKS } from '../utils/queries';
 // import AuthService from '../utils/auth';
 
-
 function BookItem(props) {
-  
-
   return (
     <div>
       <Container>
@@ -23,22 +13,20 @@ function BookItem(props) {
         <h2>{props.bookData.title}</h2>
         <img src={props.bookData.image} alt={props.bookData.title} />
         <h3>Authors: {props.bookData.authors}</h3>
-        <h3>Subject: {props.bookData.subject}</h3>
+        <h3>Subject: {props.bookData.subject.name}</h3>
         <h3>ISBN: {props.bookData.isbn}</h3>
         <h3>Price: ${props.bookData.price}</h3>
-        <h3>Seller: {props.bookData.user}</h3>
-        {props.bookData.sold ?
-          <h3>No Longer Available</h3> :
+        <h3>Seller: {props.bookData.user.username}</h3>
+        {props.bookData.sold ? (
+          <h3>No Longer Available</h3>
+        ) : (
           <Button variant="primary" type="submit">
             Available for Purchase
           </Button>
-        }
-        
-        
+        )}
       </Container>
-
     </div>
-  )
+  );
 }
 
 export default BookItem;
