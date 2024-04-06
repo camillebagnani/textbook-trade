@@ -29,13 +29,13 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="nav justify-content-end">
-          <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="/user/:id">
+          <li className="nav-item mx-1">
+            <a className="btn btn-primary" aria-current="page" href="/user/:id" role="button">
               Profile
             </a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => Auth.logout()}>
+          <li className="nav-item mx-1">
+            <a className="btn btn-outline-secondary" onClick={() => Auth.logout()} role="button">
               Logout
             </a>
           </li>
@@ -44,13 +44,13 @@ function Nav() {
     } else {
       return (
         <ul className="nav justify-content-end">
-          <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="/signup">
+          <li className="nav-item mx-1">
+            <a className="btn btn-primary" aria-current="page" href="/signup" role="button">
               Signup
             </a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/login">
+          <li className="nav-item mx-1">
+            <a className="btn btn-outline-secondary" href="/login" role="button">
               Login
             </a>
           </li>
