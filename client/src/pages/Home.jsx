@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useQuery } from '@apollo/client'
 import BookListings from "../components/BookListings"
 import { QUERY_ALL_BOOKS } from "../utils/queries";
+import { queryUser } from "../utils/queryUser";
 
 function Home() {
   const { loading, data } = useQuery(QUERY_ALL_BOOKS);
   const bookData = data?.books || [];
+
+  const {userData, userId, refetch} = queryUser();
   // console.log(bookData)
 
   // const [bookData, setBookData] = useState({
@@ -27,7 +30,9 @@ function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <BookListings bookData={bookData} />
+      {userData && <BookListings bookData={bookData} userData={userData}/>
+      }
+      
     </div>
   )
 }
