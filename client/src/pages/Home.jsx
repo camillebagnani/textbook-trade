@@ -30,7 +30,7 @@ function Home() {
   return (
     <div>
       <h1>Home</h1>
-      {userData && <BookListings bookData={bookData} userData={userData}/>
+      {userData && <BookListings bookData={bookData} userData={userData} page={"Home"}/>
       }
       
     </div>
