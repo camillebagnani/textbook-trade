@@ -30,8 +30,9 @@ function Home() {
   return (
     <div>
       <h1>Home</h1>
+
       <a href="/subject" className="btn btn-secondary" >Search by Subject</a>
-      {userData && <BookListings bookData={bookData} userData={userData}/>
+      {userData && <BookListings bookData={bookData} userData={userData} page={"Home"}/>
       }
       
     </div>
