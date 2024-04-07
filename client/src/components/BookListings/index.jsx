@@ -6,7 +6,7 @@ function BookListings(props) {
     <div>
       <h1>Book Listings</h1>
       {filteredBooks.map((book, i) => (
-        <BookItem key={i} bookData={book} userData={props.userData} page={props.page} handleRefetch={props.handleRefetch}/>
+        <BookItem key={i} bookData={book} subjectData={props.subjectData} userData={props.userData} page={props.page} handleRefetch={props.handleRefetch}/>
       
       ))}
     </div>

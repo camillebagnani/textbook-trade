@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 import { REMOVE_BOOK } from "../../utils/mutations";
 import { UPDATE_BOOK } from "../../utils/mutations";
+import BookItemUpdate from "../BookItemUpdate";
 // import { useQuery } from '@apollo/client';
 // import { QUERY_ALL_BOOKS } from '../utils/queries';
 // import AuthService from '../utils/auth';
@@ -18,7 +19,7 @@ function BookItem(props) {
     image: "",
     price: 0,
   });
-  const [useState, setUseState] = useState(false);
+  const [displayUpdateForm, setDisplayUpdateForm] = useState(false);
 
   console.log(props.bookData);
 
@@ -40,7 +41,8 @@ function BookItem(props) {
   }
 
   const handleUpdate = async (event) => {
-    setUseState(true);
+    setDisplayUpdateForm(true);
+
  
   }
 
@@ -69,7 +71,7 @@ function BookItem(props) {
           </Button>
         )}
         <Button
-        onClick={handleUpdate}
+          onClick={handleUpdate}
           variant="primary"
           type="submit"
           className={props.page === "User" ? "" : "d-none"}
@@ -85,6 +87,10 @@ function BookItem(props) {
         >
           Delete
         </Button>
+        
+        {displayUpdateForm ? (
+          <BookItemUpdate bookData={props.bookData} subjectData={props.subjectData} />
+        ) : ("") }
       </Container>
     </div>
   );
