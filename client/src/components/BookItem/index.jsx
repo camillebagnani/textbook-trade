@@ -5,6 +5,7 @@ import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 // import AuthService from '../utils/auth';
 
 function BookItem(props) {
+  console.log(props.page);
   return (
     <div>
       <Container>
@@ -20,10 +21,28 @@ function BookItem(props) {
         {props.bookData.sold ? (
           <h3>No Longer Available</h3>
         ) : (
-          <Button variant="primary" type="submit">
+          <Button
+            variant="primary"
+            type="submit"
+            className={props.page === "Home" ? "" : "d-none"}
+          >
             Available for Purchase
           </Button>
         )}
+        <Button
+          variant="primary"
+          type="submit"
+          className={props.page === "User" ? "" : "d-none"}
+        >
+          Update book
+        </Button>
+        <Button
+          variant="primary"
+          type="submit"
+          className={props.page === "User" ? "btn btn-warning" : "d-none"}
+        >
+          Delete
+        </Button>
       </Container>
     </div>
   );
