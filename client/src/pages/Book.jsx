@@ -13,12 +13,6 @@ import AuthService from '../utils/auth';
 
 
 function Book() {
-
-  
-
-
-
-
   return (
     <div>
       <Container>

@@ -30,7 +30,7 @@ function Nav() {
       return (
         <ul className="nav justify-content-end">
           <li className="nav-item mx-1">
-            <a className="btn btn-primary" aria-current="page" href="/user/:id" role="button">
+            <a className="btn btn-primary" aria-current="page" href="/user" role="button">
               Profile
             </a>
           </li>

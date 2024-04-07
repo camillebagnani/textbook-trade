@@ -1,11 +1,34 @@
 import { useState, useEffect } from "react";
+import { useMutation } from "@apollo/client";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
+import { REMOVE_BOOK } from "../../utils/mutations";
+import { UPDATE_BOOK } from "../../utils/mutations";
 // import { useQuery } from '@apollo/client';
 // import { QUERY_ALL_BOOKS } from '../utils/queries';
 // import AuthService from '../utils/auth';
 
 function BookItem(props) {
-  console.log(props.page);
+  const [removeBook] = useMutation(REMOVE_BOOK);
+
+  console.log(props.bookData);
+
+  const handleDelete = async (event) => {
+    const key = event.target.value;
+    event.preventDefault();
+  
+    try {
+      const { data } = await removeBook({
+        variables: {
+          _id: key,
+        },
+      });
+      
+    } catch (err) {
+      console.error(err);
+    }
+    props.handleRefetch();
+  }
+
   return (
     <div>
       <Container>
@@ -37,6 +60,8 @@ function BookItem(props) {
           Update book
         </Button>
         <Button
+        value={props.bookData._id}
+          onClick={handleDelete}
           variant="primary"
           type="submit"
           className={props.page === "User" ? "btn btn-warning" : "d-none"}
