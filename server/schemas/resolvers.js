@@ -132,18 +132,18 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    updateBook: async (parent, args, context) => {
+    updateBook: async (parent, { _id, bookData }, context) => {
       if (context.user) {
-        return await Book.findOneAndUpdate(
-          { _id: args._id },
-          args,
-
-          {
-            new: true,
-          }
+        const updatedBook = await Book.findOneAndUpdate(
+          { _id: _id },
+          bookData,
+          { new: true }
         );
+    
+        console.log(updatedBook);
+        return updatedBook;
       }
-      throw AuthenticationError;
+      throw new AuthenticationError;
     },
     addTransaction: async (parent, args, context) => {
       console.log(args)

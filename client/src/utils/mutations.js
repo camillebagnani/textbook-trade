@@ -54,8 +54,8 @@ export const REMOVE_BOOK = gql`
 `;
 
 export const UPDATE_BOOK = gql`
-  mutation updateBook($bookData: BookInput!) {
-    updateBook(bookData: $bookData) {
+  mutation updateBook($id: ID!, $bookData: BookInput) {
+    updateBook(_id: $id, bookData: $bookData) {
       _id
       authors
       image

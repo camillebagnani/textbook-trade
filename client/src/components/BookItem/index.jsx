@@ -21,7 +21,7 @@ function BookItem(props) {
   });
   const [displayUpdateForm, setDisplayUpdateForm] = useState(false);
 
-  console.log(props.bookData);
+  //console.log(props.bookData);
 
   const handleDelete = async (event) => {
     const key = event.target.value;
