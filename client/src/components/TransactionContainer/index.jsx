@@ -4,7 +4,7 @@ import OneTransaction from "../OneTransaction"
 
 function TransactionContainer(props) {
     const {userData, userId, refetch} = queryUser();
-console.log("PROPS", props.userData)
+//console.log("PROPS", props.userData)
     return (
         <>
         {userData && 
