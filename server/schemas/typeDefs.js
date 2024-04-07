@@ -66,7 +66,7 @@ type Mutation {
     addBook(bookData: BookInput!): Book
     addTransaction(sellerId: ID!, buyerId: ID, book: ID!): Transaction
     removeBook(_id: ID!): Book
-    updateBook(_id: ID!, sold: Boolean, price: Float): Book
+    updateBook(bookData: BookInput!): Book
 }
 `;
 

@@ -9,6 +9,16 @@ import { UPDATE_BOOK } from "../../utils/mutations";
 
 function BookItem(props) {
   const [removeBook] = useMutation(REMOVE_BOOK);
+  const [updateBook] = useMutation(UPDATE_BOOK);
+  const [formState, setFormState] = useState({
+    title: "",
+    authors: "",
+    subject: {},
+    isbn: "",
+    image: "",
+    price: 0,
+  });
+  const [useState, setUseState] = useState(false);
 
   console.log(props.bookData);
 
@@ -29,10 +39,16 @@ function BookItem(props) {
     props.handleRefetch();
   }
 
+  const handleUpdate = async (event) => {
+    setUseState(true);
+ 
+  }
+
   return (
     <div>
       <Container>
         <h1>Book for Trade</h1>
+
 
         <h2>{props.bookData.title}</h2>
         <img src={props.bookData.image} alt={props.bookData.title} />
@@ -53,6 +69,7 @@ function BookItem(props) {
           </Button>
         )}
         <Button
+        onClick={handleUpdate}
           variant="primary"
           type="submit"
           className={props.page === "User" ? "" : "d-none"}
