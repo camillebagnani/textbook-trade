@@ -54,15 +54,25 @@ export const REMOVE_BOOK = gql`
 `;
 
 export const UPDATE_BOOK = gql`
-  mutation updateBook($_id: ID!, $sold: Boolean, $price: Float) {
-    updateBook(_id: $_id, sold: $sold, price: $price) {
+  mutation updateBook($bookData: BookInput!) {
+    updateBook(bookData: $bookData) {
       _id
-      title
+      authors
+      image
+      isbn
       price
-      sold
+      title
+      user {
+        _id
+        username
+      }
+      subject {
+        _id
+        name
+      }
     }
   }
-`;
+  `;
 
 export const ADD_TRANSACTION = gql`
 mutation addTransaction($sellerId: ID!, $book: ID!) {

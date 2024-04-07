@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       //   element: <Book />,
       // },
       {
-        path: '/user/',
+        path: '/user',
         element: <User />,
       },
       {

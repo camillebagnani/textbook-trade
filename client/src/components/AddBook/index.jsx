@@ -32,6 +32,7 @@ function AddBook(props) {
     });
     e.target.reset();
     setSubmitted(true);
+    //set to hide form once submitted
     console.log(response);
     props.handleRefetch()
   };

@@ -24,7 +24,7 @@ function User() {
   return (
     <div>
       {userData &&
-        <BookListings userData={userData} bookData={userData.me.books} page={"User"}/>}
+        <BookListings userData={userData} bookData={userData.me.books} subjectData={subjectData} page={"User"} handleRefetch={() => handleRefetch()}/>}
         <AddBook userData={userId} subjectData={subjectData} handleRefetch={() => handleRefetch()} />
         <TransactionContainer userData={userData}/>
     </div>
