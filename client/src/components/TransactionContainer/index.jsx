@@ -9,7 +9,7 @@ function TransactionContainer(props) {
         <>
         {userData && 
         <Container>
-        <h2>{props.userData.me.username}'s Transactions</h2>
+        <h2 className="text-center">{props.userData.me.username}'s Transactions</h2>
         {props.userData.me.transactions.map((transaction, i) => (
             <OneTransaction key={i} userData={props.userData} transactionData={transaction}/>
         ))}
