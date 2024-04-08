@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
-import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
+import { Container, Col, Form, Button, Card, Row, Modal } from "react-bootstrap";
 import { REMOVE_BOOK } from "../../utils/mutations";
 import { UPDATE_BOOK } from "../../utils/mutations";
 import BookItemUpdate from "../BookItemUpdate";
+
 // import { useQuery } from '@apollo/client';
 // import { QUERY_ALL_BOOKS } from '../utils/queries';
 // import AuthService from '../utils/auth';
@@ -47,7 +48,9 @@ function BookItem(props) {
   }
 
   return (
-    <div>
+    <div
+    className="modal show"
+      style={{ display: 'block', position: 'initial' }}>
       <Container>
         <h1>Book for Trade</h1>
 

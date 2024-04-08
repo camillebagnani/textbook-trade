@@ -8,6 +8,7 @@
     "seed": "cd server && npm run seed"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "concurrently": "^8.2.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.2.4"
