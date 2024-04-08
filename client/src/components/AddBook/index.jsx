@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_BOOK } from "../../utils/mutations";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function AddBook(props) {
   const [formState, setFormState] = useState({
@@ -32,7 +34,7 @@ function AddBook(props) {
     });
     e.target.reset();
     setSubmitted(true);
-    //set to hide form once submitted
+    setBookMenu(false); 
     console.log(response);
     props.handleRefetch()
   };
@@ -55,15 +57,17 @@ function AddBook(props) {
   };
 
   return (
-    <div className="card">
-      <button
-        className="btn btn-secondary"
-        type="button"
+    <div className="modal show text-center"
+      style={{ display: 'block', position: 'initial' }}>
+      <Button
+        className="m-3"
+        size="lg"
+        variant="info"
         id="dropdownMenuButton"
         onClick={handleAddBook}
       >
         List a book
-      </button>
+      </Button>
       <div className={addBookMenu ? "card-body" : "d-none"}>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-3">
@@ -139,13 +143,13 @@ function AddBook(props) {
               required
             />
           </div>
-          <button
+          <Button
             type="submit"
-            className={submitted ? "btn btn-primary d-none" : "btn btn-primary"}
+            className={submitted ? "d-none" : "btn btn-primary"}
           >
             Submit
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className={
               submitted
@@ -154,7 +158,7 @@ function AddBook(props) {
             }
           >
             Success!
-          </button>
+          </Button>
         </form>
       </div>
     </div>

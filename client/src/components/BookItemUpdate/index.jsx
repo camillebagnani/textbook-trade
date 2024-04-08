@@ -45,7 +45,7 @@ const BookItemUpdate = (props) => {
         console.log("success")
         e.target.reset();
         setSubmitted(true);
-        //   STILL TO DO: set to hide form once submitted
+        setAddBookMenu(false); //set to hide form once submitted
     };
     return (
         <div>
