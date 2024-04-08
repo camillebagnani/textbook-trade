@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
-import { Container, Col, Form, Button, Card, Row, Modal } from "react-bootstrap";
-import { REMOVE_BOOK } from "../../utils/mutations";
+import {
+  Container,
+  Col,
+  Form,
+  Button,
+  Card,
+  Row,
+  Modal,
+} from "react-bootstrap";
+import { REMOVE_BOOK, ADD_TRANSACTION } from "../../utils/mutations";
 import { UPDATE_BOOK } from "../../utils/mutations";
 import BookItemUpdate from "../BookItemUpdate";
 
@@ -10,8 +18,10 @@ import BookItemUpdate from "../BookItemUpdate";
 // import AuthService from '../utils/auth';
 
 function BookItem(props) {
+  const [addTransaction] = useMutation(ADD_TRANSACTION);
   const [removeBook] = useMutation(REMOVE_BOOK);
   const [updateBook] = useMutation(UPDATE_BOOK);
+  const [submitted, setSubmitted] = useState(false);
   const [formState, setFormState] = useState({
     title: "",
     authors: "",
@@ -27,33 +37,51 @@ function BookItem(props) {
   const handleDelete = async (event) => {
     const key = event.target.value;
     event.preventDefault();
-  
+
     try {
       const { data } = await removeBook({
         variables: {
           _id: key,
         },
       });
-      
     } catch (err) {
       console.error(err);
     }
     props.handleRefetch();
-  }
+  };
 
   const handleUpdate = async (event) => {
     setDisplayUpdateForm(true);
+  };
 
- 
-  }
+  const handleAddTransaction = async (event) => {
+    const bookId = props.bookData._id;
+    const sellerId = props.bookData.user._id;
+    console.log(bookId);
+    console.log(sellerId);
+    event.preventDefault();
+
+    try {
+      const { data } = await addTransaction({
+        variables: {
+          sellerId: sellerId,
+          book: bookId,
+        },
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+    }
+    //props.handleRefetch();
+  };
 
   return (
     <div
-    className="modal show"
-      style={{ display: 'block', position: 'initial' }}>
+      className="modal show"
+      style={{ display: "block", position: "initial" }}
+    >
       <Container>
         <h1>Book for Trade</h1>
-
 
         <h2>{props.bookData.title}</h2>
         <img src={props.bookData.image} alt={props.bookData.title} />
@@ -65,13 +93,34 @@ function BookItem(props) {
         {props.bookData.sold ? (
           <h3>No Longer Available</h3>
         ) : (
-          <Button
-            variant="primary"
-            type="submit"
-            className={props.page === "Home" ? "" : "d-none"}
-          >
-            Available for Purchase
-          </Button>
+          <div>
+            <Button
+              type="submit"
+              onClick={handleAddTransaction}
+              key={props.bookData._id}
+              value={props.bookData.user._id}
+              variant="primary"
+              className={
+                props.page === "Home"
+                  ? submitted
+                    ? "d-none"
+                    : "btn btn-primary"
+                  : "d-none"
+              }
+            >
+              Buy This Book!
+            </Button>
+            <Button
+              type="button"
+              className={
+                submitted
+                  ? "btn btn-success disabled"
+                  : "btn btn-success disabled d-none"
+              }
+            >
+              Purchased!
+            </Button>
+          </div>
         )}
         <Button
           onClick={handleUpdate}
@@ -82,7 +131,7 @@ function BookItem(props) {
           Update book
         </Button>
         <Button
-        value={props.bookData._id}
+          value={props.bookData._id}
           onClick={handleDelete}
           variant="primary"
           type="submit"
@@ -90,10 +139,14 @@ function BookItem(props) {
         >
           Delete
         </Button>
-        
         {displayUpdateForm ? (
-          <BookItemUpdate bookData={props.bookData} subjectData={props.subjectData} />
-        ) : ("") }
+          <BookItemUpdate
+            bookData={props.bookData}
+            subjectData={props.subjectData}
+          />
+        ) : (
+          ""
+        )}
       </Container>
     </div>
   );
