@@ -45,7 +45,7 @@ function Nav() {
       return (
         <ul className="nav justify-content-end">
           <li className="nav-item mx-1">
-            <a className="btn btn-primary" aria-current="page" href="/signup" role="button">
+            <a className="btn btn-dark" aria-current="page" href="/signup" role="button">
               Signup
             </a>
           </li>
