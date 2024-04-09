@@ -4,6 +4,7 @@ import { ADD_BOOK } from "../../utils/mutations";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+
 function AddBook(props) {
   const [formState, setFormState] = useState({
     title: "",
@@ -26,7 +27,7 @@ function AddBook(props) {
           authors: formState.authors,
           subject: formState.subject,
           isbn: formState.isbn,
-          image: formState.image,
+          image: "/textbook-icon.png",
           price: parseInt(formState.price),
           user: props.userData,
         },
