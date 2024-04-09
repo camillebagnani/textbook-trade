@@ -31,9 +31,9 @@ function Signup() {
   };
 
   return (
-    <div className="card">
+    <div className="card zilla-slab-regular">
       <div className="card-body">
-        <h4 className="card-title mb-3">Signup</h4>
+        <h4 className="card-title mb-3 graduate-regular text-danger">Signup</h4>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-3">
             <label htmlFor="usernameInput" className="form-label">
@@ -71,7 +71,7 @@ function Signup() {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark">
             Submit
           </button>
         </form>

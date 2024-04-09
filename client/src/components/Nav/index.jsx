@@ -28,14 +28,14 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="nav justify-content-end">
+        <ul className="nav justify-content-end zilla-slab-regular">
           <li className="nav-item mx-1">
-            <a className="btn btn-primary" aria-current="page" href="/user" role="button">
+            <a className="btn bg-dark text-light" aria-current="page" href="/user" role="button">
               Profile
             </a>
           </li>
           <li className="nav-item mx-1">
-            <a className="btn btn-outline-secondary" onClick={() => Auth.logout()} role="button">
+            <a className="btn btn-danger" onClick={() => Auth.logout()} role="button">
               Logout
             </a>
           </li>
@@ -43,14 +43,14 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="nav justify-content-end">
+        <ul className="nav justify-content-end zilla-slab-regular">
           <li className="nav-item mx-1">
-            <a className="btn btn-primary" aria-current="page" href="/signup" role="button">
+            <a className="btn bg-dark text-light" aria-current="page" href="/signup" role="button">
               Signup
             </a>
           </li>
           <li className="nav-item mx-1">
-            <a className="btn btn-outline-secondary" href="/login" role="button">
+            <a className="btn btn-danger" href="/login" role="button">
               Login
             </a>
           </li>
@@ -61,10 +61,10 @@ function Nav() {
 
   return (
     <header className="flex-row px-1 shadow-sm mb-5">
-      <nav className="navbar bg-body-tertiary">
+      <nav className="navbar bg-body-secondary">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            <h1>
+            <h1 className="graduate-regular fw-bold">
               <span role="img" aria-label="textbook">
                 📚
               </span>

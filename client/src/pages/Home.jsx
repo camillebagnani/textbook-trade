@@ -28,10 +28,10 @@ function Home() {
   // }
 
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="text-center zilla-slab-regular">
+      <h1 className="graduate-regular text-danger fw-bold">Home</h1>
 
-      <a href="/subject" className="btn btn-secondary" >Search by Subject</a>
+      <a href="/subject" className="btn bg-dark text-light" >Search by Subject</a>
       {userData && <BookListings bookData={bookData} userData={userData} page={"Home"}/>
       }
       

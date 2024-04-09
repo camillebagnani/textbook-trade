@@ -14,9 +14,9 @@ import AuthService from '../utils/auth';
 
 function Book() {
   return (
-    <div>
+    <div >
       <Container>
-        <h1>Book for Trade</h1>
+        <h1 >Book for Trade</h1>
         <h2>{bookData.title}</h2>
         <img src={bookData.image} alt={bookData.title} />
         <h3>Authors: {bookData.authors}</h3>
@@ -26,7 +26,7 @@ function Book() {
         <h3>Seller: {bookData.user}</h3>
         {bookData.sold ?
           <h3>No Longer Available</h3> :
-          <Button variant="primary" type="submit">
+          <Button variant="dark" type="submit">
             Available for Purchase
           </Button>
         }
