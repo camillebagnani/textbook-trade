@@ -34,7 +34,7 @@ function AddBook(props) {
     });
     e.target.reset();
     setSubmitted(true);
-    setBookMenu(false); 
+    setBookMenu(false);
     console.log(response);
     props.handleRefetch()
   };
@@ -57,21 +57,21 @@ function AddBook(props) {
   };
 
   return (
-    <div className="modal show text-center"
+    <div className="modal show text-center zilla-slab-regular"
       style={{ display: 'block', position: 'initial' }}>
       <Button
         className="m-3"
         size="lg"
-        variant="info"
+        variant="danger"
         id="dropdownMenuButton"
         onClick={handleAddBook}
       >
         List a book
       </Button>
-      <div className={addBookMenu ? "card-body" : "d-none"}>
+      <div className={addBookMenu ? "card-body text-start" : "d-none"}>
         <form onSubmit={handleFormSubmit}>
-          <div className="mb-3">
-            <label htmlFor="titleInput" className="form-label">
+          <div className="mb-3 ">
+            <label htmlFor="titleInput" className="form-label fw-bold">
               Title
             </label>
             <input
@@ -84,7 +84,7 @@ function AddBook(props) {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="authorInput" className="form-label">
+            <label htmlFor="authorInput" className="form-label fw-bold">
               Author(s)
             </label>
             <input
@@ -97,7 +97,7 @@ function AddBook(props) {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="isbnInput" className="form-label">
+            <label htmlFor="isbnInput" className="form-label fw-bold">
               ISBN
             </label>
             <input
@@ -110,7 +110,7 @@ function AddBook(props) {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="subjectInput" className="form-label">
+            <label htmlFor="subjectInput" className="form-label fw-bold">
               Subject
             </label>
             <select
@@ -129,7 +129,7 @@ function AddBook(props) {
             </select>
           </div>
           <div className="mb-3">
-            <label htmlFor="priceInput" className="form-label">
+            <label htmlFor="priceInput" className="form-label fw-bold">
               Price
             </label>
             <input
@@ -143,22 +143,24 @@ function AddBook(props) {
               required
             />
           </div>
-          <Button
-            type="submit"
-            className={submitted ? "d-none" : "btn btn-primary"}
-          >
-            Submit
-          </Button>
-          <Button
-            type="button"
-            className={
-              submitted
-                ? "btn btn-success disabled"
-                : "btn btn-success disabled d-none"
-            }
-          >
-            Success!
-          </Button>
+          <div className="d-flex justify-content-center pb-5">
+            <Button
+              type="submit"
+              className={submitted ? "d-none" : "btn btn-dark"}
+            >
+              Submit
+            </Button>
+            <Button
+              type="button"
+              className={
+                submitted
+                  ? "btn btn-success disabled"
+                  : "btn btn-success disabled d-none"
+              }
+            >
+              Success!
+            </Button>
+          </div>
         </form>
       </div>
     </div>

@@ -7,7 +7,7 @@ function SubjectMenu(props) {
   const [formState, setFormState] = useState({
     subject: "" 
   });
-  const [addSubjectMenu, setSubjectMenu] = useState(false);
+  const [addSubjectMenu, setSubjectMenu] = useState(true); // Show the form by default
 
   const handleSubjectSearch = () => {
     setSubjectMenu(!addSubjectMenu);
@@ -38,15 +38,13 @@ function SubjectMenu(props) {
   return (
     <div className="card">
       <h2
-        // className="btn btn-secondary"
-        // type="button"
-        // id="dropdownMenuButton"
+      className="graduate-regular text-danger"
         onClick={handleSubjectSearch}
       >
         Search by subject
       </h2>
       {addSubjectMenu && (
-        <div>
+        <div className="zilla-slab-regular text-danger">
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <select
@@ -57,7 +55,7 @@ function SubjectMenu(props) {
                 value={formState.subject} // Bind selected subject value
                 required
               >
-                <option value="">--Select a subject--</option>
+                <option  value="">--Select a subject--</option>
                 {props.subjectData &&
                   props.subjectData.map((subject) => (
                     <option key={subject._id} value={subject._id}>
@@ -66,15 +64,14 @@ function SubjectMenu(props) {
                   ))}
               </select>
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-dark">  {/* Dark themed button */}
               Search
             </button>
           </form>
         </div>
       )}
-          {<BookListings bookData={subjectBookData}></BookListings>}
+      {<BookListings bookData={subjectBookData}></BookListings>}
     </div>
-
   );
 }
 

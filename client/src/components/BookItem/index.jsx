@@ -13,10 +13,6 @@ import { REMOVE_BOOK, ADD_TRANSACTION } from "../../utils/mutations";
 import { UPDATE_BOOK } from "../../utils/mutations";
 import BookItemUpdate from "../BookItemUpdate";
 
-// import { useQuery } from '@apollo/client';
-// import { QUERY_ALL_BOOKS } from '../utils/queries';
-// import AuthService from '../utils/auth';
-
 function BookItem(props) {
   const [addTransaction] = useMutation(ADD_TRANSACTION);
   const [removeBook] = useMutation(REMOVE_BOOK);
@@ -31,8 +27,6 @@ function BookItem(props) {
     price: 0,
   });
   const [displayUpdateForm, setDisplayUpdateForm] = useState(false);
-
-  console.log(props.bookData);
 
   const handleDelete = async (event) => {
     const key = event.target.value;
@@ -81,7 +75,8 @@ function BookItem(props) {
       style={{ display: "block", position: "initial" }}
     >
       <Container>
-        <h1>Book for Trade</h1>
+        <h1 className="graduate-regular text-danger fw-bold">Book for Trade</h1>
+
         <h2>{props.bookData.title}</h2>
         <img
         src={props.bookData.image}
@@ -107,7 +102,7 @@ function BookItem(props) {
                 props.page === "Home"
                   ? submitted
                     ? "d-none"
-                    : "btn btn-primary"
+                    : "btn btn-danger"
                   : "d-none"
               }
             >
@@ -127,7 +122,7 @@ function BookItem(props) {
         )}
         <Button
           onClick={handleUpdate}
-          variant="primary"
+          variant="dark"
           type="submit"
           className={props.page === "User" ? "" : "d-none"}
         >
@@ -136,7 +131,7 @@ function BookItem(props) {
         <Button
           value={props.bookData._id}
           onClick={handleDelete}
-          variant="primary"
+          variant="danger"
           type="submit"
           className={props.page === "User" ? "btn btn-warning" : "d-none"}
         >

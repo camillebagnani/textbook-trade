@@ -48,12 +48,12 @@ const BookItemUpdate = (props) => {
         setAddBookMenu(false); //set to hide form once submitted
     };
     return (
-        <div>
+        <div className="zilla-slab-regular">
             <div className="card">
                 <div className={addBookMenu ? "card-body" : "d-none"}>
                     <form onSubmit={handleFormSubmit}>
-                        <h2>Update Book Form</h2>
-                        <div className="mb-3">
+                        <h2 className="text-danger graduate-regular fw-bold">Update Book Form</h2>
+                        <div className="mb-3 fw-bold">
                             <label htmlFor="titleInput" className="form-label">
                                 Title
                             </label>
@@ -67,7 +67,7 @@ const BookItemUpdate = (props) => {
                                 required
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 fw-bold">
                             <label htmlFor="authorInput" className="form-label">
                                 Author(s)
                             </label>
@@ -81,7 +81,7 @@ const BookItemUpdate = (props) => {
                                 required
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 fw-bold">
                             <label htmlFor="isbnInput" className="form-label">
                                 ISBN
                             </label>
@@ -95,7 +95,7 @@ const BookItemUpdate = (props) => {
                                 required
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 fw-bold">
                             <label htmlFor="subjectInput" className="form-label">
                                 Subject
                             </label>
@@ -118,7 +118,7 @@ const BookItemUpdate = (props) => {
                                 ))}
                             </select>
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 fw-bold">
                             <label htmlFor="priceInput" className="form-label">
                                 Price
                             </label>
@@ -134,24 +134,26 @@ const BookItemUpdate = (props) => {
                                 required
                             />
                         </div>
-                        <button
-                            type="submit"
-                            className={
-                                submitted ? "btn btn-primary d-none" : "btn btn-primary"
-                            }
-                        >
-                            Submit
-                        </button>
-                        <button
-                            type="button"
-                            className={
-                                submitted
-                                    ? "btn btn-success disabled"
-                                    : "btn btn-success disabled d-none"
-                            }
-                        >
-                            Success!
-                        </button>
+                        <div>
+                            <button
+                                type="submit"
+                                className={
+                                    submitted ? "btn btn-primary d-none" : "btn btn-dark"
+                                }
+                            >
+                                Submit
+                            </button>
+                            <button
+                                type="button"
+                                className={
+                                    submitted
+                                        ? "btn btn-success disabled"
+                                        : "btn btn-success disabled d-none"
+                                }
+                            >
+                                Success!
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

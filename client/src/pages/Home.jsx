@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { useQuery } from '@apollo/client'
-import BookListings from "../components/BookListings"
+import { useQuery } from "@apollo/client";
+import BookListings from "../components/BookListings";
 import { QUERY_ALL_BOOKS } from "../utils/queries";
 import { queryUser } from "../utils/queryUser";
+import Auth from "../utils/auth";
+import Login from "../components/Login";
 
 function Home() {
   const { loading, data } = useQuery(QUERY_ALL_BOOKS);
@@ -28,10 +29,10 @@ function Home() {
   // }
 
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="text-center zilla-slab-regular">
+      <h1 className="graduate-regular text-danger fw-bold">Home</h1>
 
-      <a href="/subject" className="btn btn-secondary" >Search by Subject</a>
+      <a href="/subject" className="btn bg-dark text-light" >Search by Subject</a>
       {userData && <BookListings bookData={bookData} userData={userData} page={"Home"}/>
       }
       
