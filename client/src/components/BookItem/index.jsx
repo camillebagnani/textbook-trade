@@ -17,6 +17,12 @@ function BookItem(props) {
   const [addTransaction] = useMutation(ADD_TRANSACTION);
   const [removeBook] = useMutation(REMOVE_BOOK);
   const [updateBook] = useMutation(UPDATE_BOOK);
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false)
+    window.location.reload()
+  };
+  const handleShow = () => setShow(true);
   const [submitted, setSubmitted] = useState(false);
   const [formState, setFormState] = useState({
     title: "",
@@ -41,7 +47,6 @@ function BookItem(props) {
     } catch (err) {
       console.error(err);
     }
-    props.handleRefetch();
   };
 
   const handleUpdate = async (event) => {
@@ -49,11 +54,11 @@ function BookItem(props) {
   };
 
   const handleAddTransaction = async (event) => {
+    // const bookTitle = props.bookData.title;
+    console.log(props.bookData.user.username)
     const bookId = props.bookData._id;
     const sellerId = props.bookData.user._id;
-    const price = props.bookData.price
-    console.log(bookId);
-    console.log(sellerId);
+    const price = props.bookData.price;
     event.preventDefault();
 
     try {
@@ -61,14 +66,16 @@ function BookItem(props) {
         variables: {
           sellerId: sellerId,
           book: bookId,
-          price: price
+          price: price,
         },
       });
+      handleShow();
       setSubmitted(true);
+      console.log(props.bookData.user.username)
+
     } catch (err) {
       console.error(err);
     }
-    //props.handleRefetch();
   };
 
   return (
@@ -77,35 +84,28 @@ function BookItem(props) {
       style={{ display: "block", position: "initial" }}
     >
       <Container>
-      <div
-      className={
-        submitted
-            ? "d-none"
-            : ""
-      }
-      >
-
-        <h1>{props.bookData.title}</h1>
-        <img
-        src={props.bookData.image}
-        alt={props.bookData.title}
-        className="img-fluid" style={{ maxWidth: "150px", maxHeight: "150px" }}
-        />
-        <h3>Authors: {props.bookData.authors}</h3>
-        <h3>Subject: {props.bookData.subject.name}</h3>
-        <h3>ISBN: {props.bookData.isbn}</h3>
-        <h3>Price: ${props.bookData.price}</h3>
-        <h3>Seller: {props.bookData.user.username}</h3>
+        <div className={submitted ? "d-none" : ""}>
+          <h1>{props.bookData.title}</h1>
+          <img
+            src={props.bookData.image}
+            alt={props.bookData.title}
+            className="img-fluid"
+            style={{ maxWidth: "150px", maxHeight: "150px" }}
+          />
+          <h3>Authors: {props.bookData.authors}</h3>
+          <h3>Subject: {props.bookData.subject.name}</h3>
+          <h3>ISBN: {props.bookData.isbn}</h3>
+          <h3>Price: ${props.bookData.price}</h3>
+          <h3>Seller: {props.bookData.user.username}</h3>
         </div>
         {props.bookData.sold ? (
           <h3>No Longer Available</h3>
         ) : (
           <div>
             <Button
+              data-toggle="modal"
               type="submit"
               onClick={handleAddTransaction}
-              key={props.bookData._id}
-              value={props.bookData.user._id}
               variant="danger"
               className={
                 props.page === "Home"
@@ -117,16 +117,21 @@ function BookItem(props) {
             >
               Buy This Book!
             </Button>
-            <Button
-              type="button"
-              className={
-                submitted
-                  ? "btn btn-success disabled"
-                  : "btn btn-success disabled d-none"
-              }
-            >
-              Purchased!
-            </Button>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Book Purchased!</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Thank you for shopping with us!
+                {/* <p>You purchased {props.bookData.price}</p>
+                <p>from {props.bookData.user.username}</p> */}
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         )}
         <Button
