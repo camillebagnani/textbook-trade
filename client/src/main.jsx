@@ -1,15 +1,30 @@
-import React from "react";
+import { React, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import NoMatch from "./pages/NoMatch.jsx";
-import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup";
-import User from "./pages/User"
+import User from "./pages/User";
 import SubjectSearch from "./pages/subjectSearch.jsx";
-// import BookListings from "./pages/BookListings"
+import Auth from "./utils/auth.js";
+
+const ProtectedRoute = ({ element, path }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!Auth.loggedIn()) {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  return <>{element}</>;
+};
 
 const router = createBrowserRouter([
   {
@@ -22,26 +37,17 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
         path: "/signup",
         element: <Signup />,
       },
-      // {
-      //   path: '/book/:id',
-      //   element: <Book />,
-      // },
       {
-        path: '/user',
-        element: <User />,
+        path: "/user",
+        element: <ProtectedRoute path="/user" element={<User />} />,
       },
       {
-        path: '/subject',
-        element: <SubjectSearch />
+        path: "/subject",
+        element: <ProtectedRoute path="/subject" element={<SubjectSearch />} />,
       },
-      
     ],
   },
 ]);

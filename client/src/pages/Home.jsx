@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { useQuery } from '@apollo/client'
-import BookListings from "../components/BookListings"
+import { useQuery } from "@apollo/client";
+import BookListings from "../components/BookListings";
 import { QUERY_ALL_BOOKS } from "../utils/queries";
 import { queryUser } from "../utils/queryUser";
+import Auth from "../utils/auth";
+import Login from "../components/Login";
 
 function Home() {
   const { loading, data } = useQuery(QUERY_ALL_BOOKS);
