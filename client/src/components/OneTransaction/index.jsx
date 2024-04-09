@@ -5,9 +5,7 @@ function OneTransaction(props) {
   const isBuyer = props.transactionData.buyerId._id;
   const isSeller = props.transactionData.sellerId._id;
   const userId = props.userData.me._id;
-
   const date = props.transactionData.purchaseDate/1000;
-  console.log(1712630815);
   const formattedDate = dayjs.unix(date).format('MMM D, YYYY');
 
   return (
