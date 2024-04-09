@@ -30,12 +30,12 @@ function Nav() {
       return (
         <ul className="nav justify-content-end">
           <li className="nav-item mx-1">
-            <a className="btn btn-primary" aria-current="page" href="/user" role="button">
+            <a className="btn btn-dark" aria-current="page" href="/user" role="button">
               Profile
             </a>
           </li>
           <li className="nav-item mx-1">
-            <a className="btn btn-outline-secondary" onClick={() => Auth.logout()} role="button">
+            <a className="btn btn-danger" onClick={() => Auth.logout()} role="button">
               Logout
             </a>
           </li>
@@ -55,11 +55,11 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1 shadow-sm mb-5">
+    <header className="flex-row px-1 shadow-sm mb-5 zilla-slab-regular">
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            <h1>
+            <h1 className="graduate-regular fw-bold">
               <span role="img" aria-label="textbook">
                 📚
               </span>

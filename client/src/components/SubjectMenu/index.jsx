@@ -64,9 +64,6 @@ function SubjectMenu(props) {
                   ))}
               </select>
             </div>
-            <button type="submit" className="btn btn-dark">  {/* Dark themed button */}
-              Search
-            </button>
           </form>
         </div>
       )}
