@@ -23,6 +23,7 @@ const BookItemUpdate = (props) => {
             [name]: value,
         });
         setSubmitted(false);
+        
     };
 
     const handleFormSubmit = async (e) => {
@@ -46,6 +47,7 @@ const BookItemUpdate = (props) => {
         e.target.reset();
         setSubmitted(true);
         setAddBookMenu(false); //set to hide form once submitted
+        window.location.reload()
     };
     return (
         <div className="zilla-slab-regular">
