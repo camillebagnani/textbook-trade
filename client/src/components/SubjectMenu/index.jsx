@@ -67,7 +67,7 @@ function SubjectMenu(props) {
           </form>
         </div>
       )}
-      {<BookListings bookData={subjectBookData}></BookListings>}
+      {<BookListings bookData={subjectBookData} page={"Subject"}></BookListings>}
     </div>
   );
 }
