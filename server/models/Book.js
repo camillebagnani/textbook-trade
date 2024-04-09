@@ -24,7 +24,7 @@ const bookSchema = new Schema({
   },
   image: {
     type: String,
-    default: "https://via.placeholder.com/150",
+    default: "/textbook-icon.png",
   },
   price: {
     type: Number,
