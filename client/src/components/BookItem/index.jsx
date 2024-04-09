@@ -75,13 +75,26 @@ function BookItem(props) {
       style={{ display: "block", position: "initial" }}
     >
       <Container>
-        <h2>{props.bookData.title}</h2>
-        <img src={props.bookData.image} alt={props.bookData.title} />
+      <div
+      className={
+        submitted
+            ? "d-none"
+            : ""
+      }
+      >
+
+        <h1>{props.bookData.title}</h1>
+        <img
+        src={props.bookData.image}
+        alt={props.bookData.title}
+        className="img-fluid" style={{ maxWidth: "150px", maxHeight: "150px" }}
+        />
         <h3>Authors: {props.bookData.authors}</h3>
         <h3>Subject: {props.bookData.subject.name}</h3>
         <h3>ISBN: {props.bookData.isbn}</h3>
         <h3>Price: ${props.bookData.price}</h3>
         <h3>Seller: {props.bookData.user.username}</h3>
+        </div>
         {props.bookData.sold ? (
           <h3>No Longer Available</h3>
         ) : (
@@ -91,7 +104,7 @@ function BookItem(props) {
               onClick={handleAddTransaction}
               key={props.bookData._id}
               value={props.bookData.user._id}
-              variant="primary"
+              variant="danger"
               className={
                 props.page === "Home"
                   ? submitted
@@ -127,7 +140,7 @@ function BookItem(props) {
           onClick={handleDelete}
           variant="danger"
           type="submit"
-          className={props.page === "User" ? "btn btn-warning" : "d-none"}
+          className={props.page === "User" ? "btn btn-danger" : "d-none"}
         >
           Delete
         </Button>
