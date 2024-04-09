@@ -14,6 +14,12 @@ function Signup() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    if (formState.password.length < 8) {
+      alert("Password must be at least 8 characters long.");
+      return;
+    }
+
     const response = await addUser({
       variables: {
         username: formState.username,
