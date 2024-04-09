@@ -28,14 +28,14 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="nav justify-content-end zilla-slab-regular">
+        <ul className="nav justify-content-end">
           <li className="nav-item mx-1">
-            <a className="btn btn-dark" aria-current="page" href="/user" role="button">
+            <a className="btn btn-primary" aria-current="page" href="/user" role="button">
               Profile
             </a>
           </li>
           <li className="nav-item mx-1">
-            <a className="btn btn-danger" onClick={() => Auth.logout()} role="button">
+            <a className="btn btn-outline-secondary" onClick={() => Auth.logout()} role="button">
               Logout
             </a>
           </li>
@@ -43,9 +43,9 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="nav justify-content-end zilla-slab-regular">
+        <ul className="nav justify-content-end">
           <li className="nav-item mx-1">
-            <a className="btn btn-danger" aria-current="page" href="/signup" role="button">
+            <a className="btn btn-primary" aria-current="page" href="/signup" role="button">
               Signup
             </a>
           </li>
@@ -59,7 +59,7 @@ function Nav() {
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            <h1 className="graduate-regular fw-bold">
+            <h1>
               <span role="img" aria-label="textbook">
                 📚
               </span>
