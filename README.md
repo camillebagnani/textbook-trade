@@ -18,23 +18,19 @@ Textbook Trade is live and can be accessed by clicking on [this link](https://te
 
 In order to view books and add their own, users will need to login or create an account.
 
-![Home page](assets/images/screenshot.png)
+![Home page](./images/screenshot%20(1).png)
 
 Users can create an account by clicking on "Signup". This will take the user to a page where they input their username, email, and password.
 
-![Signup page](assets/images/screenshot.png)
+![Signup page](./images/screenshot%20(2).png)
 
-Similarly, users can login if they have an existing account by clicking on "Login". This will take the user to a page where they can log in using their email address and password.
+After the user logs in they will be able to view listed books and their profile. On the profile page the user will see books that they have posted for sale, as well as a history of their transactions.
 
-![Login page](assets/images/screenshot.png)
-
-After the user logs in they will be able to view their profile. On the profile page the user will see books that they have posted for sale, as well as a history of their transactions.
-
-![Profile page](assets/images/screenshot.png)
+![Profile page](./images/screenshot%20(3).png)
 
 From the user's profile, they will also be able to post a new book for sale. Users will enter in all required information and then click submit. Upon submitting this info, the book will become visible back on the main page.
 
-![Add book component](assets/images/screenshot.png)
+![Add book component](./images/screenshot%20(4).png)
 
 ## Credits
 
