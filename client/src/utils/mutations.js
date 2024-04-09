@@ -75,9 +75,10 @@ export const UPDATE_BOOK = gql`
   `;
 
 export const ADD_TRANSACTION = gql`
-mutation addTransaction($sellerId: ID!, $book: ID!) {
-  addTransaction(sellerId: $sellerId, book: $book) {
+mutation addTransaction($sellerId: ID!, $book: ID!, $price: Float) {
+  addTransaction(sellerId: $sellerId, book: $book, price: $price) {
     _id
+    price
     purchaseDate
     buyerId {
       _id

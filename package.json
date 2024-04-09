@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.11.5",
     "bootstrap": "^5.3.3",
     "concurrently": "^8.2.2",
+    "dayjs": "^1.11.10",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.2.4"
   },

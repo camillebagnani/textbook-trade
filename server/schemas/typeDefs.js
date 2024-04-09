@@ -32,6 +32,7 @@ type Transaction {
     sellerId: User
     buyerId: User
     book: Book
+    price:Float
 }
 
 type Auth {
@@ -64,7 +65,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addBook(bookData: BookInput!): Book
-    addTransaction(sellerId: ID!, buyerId: ID, book: ID!): Transaction
+    addTransaction(sellerId: ID!, buyerId: ID, book: ID!, price: Float): Transaction
     removeBook(_id: ID!): Book
     updateBook(_id: ID!, bookData: BookInput): Book
 }

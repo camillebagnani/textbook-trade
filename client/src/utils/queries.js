@@ -25,6 +25,7 @@ query me {
     }
     transactions {
       _id
+      price
       book {
         _id
         title
