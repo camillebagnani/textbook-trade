@@ -51,7 +51,7 @@ function OneTransaction(props) {
                     Sold to {props.transactionData.buyerId.username}
                   </h6>
                   <h6 className="card-subtitle mb-2 text-body-secondary">
-                    for {props.transactionData.price}
+                    for ${props.transactionData.price}
                   </h6>
                   <h6 className="card-subtitle mb-2 text-body-secondary">
                     on {formattedDate}
