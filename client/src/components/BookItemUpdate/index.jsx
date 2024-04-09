@@ -138,7 +138,7 @@ const BookItemUpdate = (props) => {
                             <button
                                 type="submit"
                                 className={
-                                    submitted ? "btn btn-primary d-none" : "btn btn-dark"
+                                    submitted ? "btn btn-dark d-none" : "btn btn-dark"
                                 }
                             >
                                 Submit
