@@ -75,6 +75,13 @@ function BookItem(props) {
       style={{ display: "block", position: "initial" }}
     >
       <Container>
+      <div
+      className={
+        submitted
+            ? "d-none"
+            : ""
+      }
+      >
         <h1 className="graduate-regular text-danger fw-bold">Book for Trade</h1>
 
         <h2>{props.bookData.title}</h2>
@@ -88,6 +95,7 @@ function BookItem(props) {
         <h3>ISBN: {props.bookData.isbn}</h3>
         <h3>Price: ${props.bookData.price}</h3>
         <h3>Seller: {props.bookData.user.username}</h3>
+        </div>
         {props.bookData.sold ? (
           <h3>No Longer Available</h3>
         ) : (
