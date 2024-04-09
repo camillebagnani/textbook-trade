@@ -44,6 +44,7 @@ function BookItem(props) {
           _id: key,
         },
       });
+      window.location.reload()
     } catch (err) {
       console.error(err);
     }
