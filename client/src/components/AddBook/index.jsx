@@ -10,7 +10,7 @@ function AddBook(props) {
     authors: "",
     subject: {},
     isbn: "",
-    image: "",
+    image: "/textbook-icon.png",
     price: 0,
   });
   const [addBook] = useMutation(ADD_BOOK);

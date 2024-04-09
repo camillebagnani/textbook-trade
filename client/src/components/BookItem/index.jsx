@@ -63,10 +63,10 @@ function BookItem(props) {
         },
       });
       setSubmitted(true);
+     // console.log(props.bookData);
     } catch (err) {
       console.error(err);
     }
-    //props.handleRefetch();
   };
 
   return (
@@ -75,15 +75,27 @@ function BookItem(props) {
       style={{ display: "block", position: "initial" }}
     >
       <Container>
+      <div
+      className={
+        submitted
+            ? "d-none"
+            : ""
+      }
+      >
         <h1 className="graduate-regular text-danger fw-bold">Book for Trade</h1>
 
         <h2>{props.bookData.title}</h2>
-        <img src={props.bookData.image} alt={props.bookData.title} />
+        <img
+        src={props.bookData.image}
+        alt={props.bookData.title}
+        className="img-fluid" style={{ maxWidth: "150px", maxHeight: "150px" }}
+        />
         <h3>Authors: {props.bookData.authors}</h3>
         <h3>Subject: {props.bookData.subject.name}</h3>
         <h3>ISBN: {props.bookData.isbn}</h3>
         <h3>Price: ${props.bookData.price}</h3>
         <h3>Seller: {props.bookData.user.username}</h3>
+        </div>
         {props.bookData.sold ? (
           <h3>No Longer Available</h3>
         ) : (
