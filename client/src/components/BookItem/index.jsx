@@ -32,7 +32,7 @@ function BookItem(props) {
   });
   const [displayUpdateForm, setDisplayUpdateForm] = useState(false);
 
-  //console.log(props.bookData);
+  console.log(props.bookData);
 
   const handleDelete = async (event) => {
     const key = event.target.value;
@@ -69,10 +69,10 @@ function BookItem(props) {
         },
       });
       setSubmitted(true);
+     // console.log(props.bookData);
     } catch (err) {
       console.error(err);
     }
-    //props.handleRefetch();
   };
 
   return (
@@ -82,9 +82,12 @@ function BookItem(props) {
     >
       <Container>
         <h1>Book for Trade</h1>
-
         <h2>{props.bookData.title}</h2>
-        <img src={props.bookData.image} alt={props.bookData.title} />
+        <img
+        src={props.bookData.image}
+        alt={props.bookData.title}
+        className="img-fluid" style={{ maxWidth: "150px", maxHeight: "150px" }}
+        />
         <h3>Authors: {props.bookData.authors}</h3>
         <h3>Subject: {props.bookData.subject.name}</h3>
         <h3>ISBN: {props.bookData.isbn}</h3>
