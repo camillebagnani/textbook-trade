@@ -105,7 +105,7 @@ function BookItem(props) {
               onClick={handleAddTransaction}
               key={props.bookData._id}
               value={props.bookData.user._id}
-              variant="primary"
+              variant="danger"
               className={
                 props.page === "Home"
                   ? submitted
@@ -141,7 +141,7 @@ function BookItem(props) {
           onClick={handleDelete}
           variant="danger"
           type="submit"
-          className={props.page === "User" ? "btn btn-warning" : "d-none"}
+          className={props.page === "User" ? "btn btn-danger" : "d-none"}
         >
           Delete
         </Button>

@@ -59,7 +59,7 @@ function Nav() {
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            <h1>
+            <h1 className="graduate-regular fw-bold">
               <span role="img" aria-label="textbook">
                 📚
               </span>
