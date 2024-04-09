@@ -108,7 +108,7 @@ function BookItem(props) {
               onClick={handleAddTransaction}
               variant="danger"
               className={
-                props.page === "Home"
+                props.page === "Home" || props.page === "Subject"
                   ? submitted
                     ? "d-none"
                     : "btn btn-danger"
