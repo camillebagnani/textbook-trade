@@ -11,10 +11,6 @@ function User() {
     useQuery(QUERY_ALL_SUBJECTS);
   const subjectData = subjectsData?.subjects || [];
 
-
-  // const { loading: userLoading, data: userData, refetch } = useQuery(QUERY_ME);
-  // const userId = userData?.me._id;
-
   const { userData, userId, refetch } = queryUser();
 
   const handleRefetch = () => {

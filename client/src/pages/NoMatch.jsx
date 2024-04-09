@@ -1,6 +1,6 @@
 function NoMatch() {
   return (
-    <h1>NoMatch</h1>
+    <h1>No match</h1>
   )
 }
 

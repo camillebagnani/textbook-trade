@@ -16,7 +16,7 @@ Textbook Trade is powered by quite a few different technologies. The two most pr
 
 Textbook Trade is live and can be accessed by clicking on [this link](https://textbook-trade.onrender.com/).
 
-Anyone will be able to access the main page of the website, browse the books available for sale, and even purchase textbooks. In order for users to save their transaction history or post their own books for sale, they will be reuqired to login or create an account.
+In order to view books and add their own, users will need to login or create an account.
 
 ![Home page](assets/images/screenshot.png)
 

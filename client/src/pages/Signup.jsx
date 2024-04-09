@@ -5,7 +5,11 @@ import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
 function Signup() {
-  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (e) => {
@@ -75,6 +79,12 @@ function Signup() {
             Submit
           </button>
         </form>
+        <p className="mt-3">
+          Already have an account?{" "}
+          <span>
+            <a href="/">Log in instead.</a>
+          </span>
+        </p>
       </div>
     </div>
   );
