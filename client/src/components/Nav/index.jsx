@@ -49,11 +49,6 @@ function Nav() {
               Signup
             </a>
           </li>
-          <li className="nav-item mx-1">
-            <a className="btn btn-outline-secondary" href="/login" role="button">
-              Login
-            </a>
-          </li>
         </ul>
       );
     }
