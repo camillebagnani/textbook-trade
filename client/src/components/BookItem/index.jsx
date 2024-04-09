@@ -65,10 +65,10 @@ function BookItem(props) {
         },
       });
       setSubmitted(true);
-     // console.log(props.bookData);
     } catch (err) {
       console.error(err);
     }
+    //props.handleRefetch();
   };
 
   return (
@@ -84,9 +84,8 @@ function BookItem(props) {
             : ""
       }
       >
-        <h1 className="graduate-regular text-danger fw-bold">Book for Trade</h1>
 
-        <h2>{props.bookData.title}</h2>
+        <h1>{props.bookData.title}</h1>
         <img
         src={props.bookData.image}
         alt={props.bookData.title}

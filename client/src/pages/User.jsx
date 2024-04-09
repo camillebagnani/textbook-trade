@@ -20,9 +20,12 @@ function User() {
   return (
     <div>
       {userData &&
-        <BookListings userData={userData} bookData={userData.me.books} subjectData={subjectData} page={"User"} handleRefetch={() => handleRefetch()}/>}
-        <AddBook userData={userId} subjectData={subjectData} handleRefetch={() => handleRefetch()} />
-        <TransactionContainer userData={userData}/>
+        <h1 className="graduate-regular text-danger p-5 fw-bolder text-center">{userData.me.username}'s Profile</h1>
+      }
+      {userData &&
+        <BookListings userData={userData} bookData={userData.me.books} subjectData={subjectData} page={"User"} handleRefetch={() => handleRefetch()} />}
+      <AddBook userData={userId} subjectData={subjectData} handleRefetch={() => handleRefetch()} />
+      <TransactionContainer userData={userData} />
     </div>
   );
 }
