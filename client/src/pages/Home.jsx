@@ -9,35 +9,36 @@ function Home() {
   const { loading, data } = useQuery(QUERY_ALL_BOOKS);
   const bookData = data?.books || [];
 
-  const {userData, userId, refetch} = queryUser();
-  // console.log(bookData)
+  const { userData, userId, refetch } = queryUser();
 
-  // const [bookData, setBookData] = useState({
+  const renderLogin = () => {
+    if (Auth.loggedIn()) {
+      return (
+        <div className="text-center zilla-slab-regular">
+          <h1 className="graduate-regular text-danger fw-bold">Home</h1>
 
-  // });
+          <a href="/subject" className="btn bg-dark text-light">
+            Search by Subject
+          </a>
+          {userData && (
+            <BookListings
+              bookData={bookData}
+              userData={userData}
+              page={"Home"}
+            />
+          )}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Login />
+        </div>
+      );
+    }
+  };
 
-  // const getBookData = async () => {
-
-  //   try {
-  //   const { bookData } = await allBooks({
-  //     variables: {bookData: books}
-  //   });
-  //   console.log("Testing!")
-  // } catch (err) {
-  //   console.error(err);
-  // }
-  // }
-
-  return (
-    <div className="text-center zilla-slab-regular">
-      <h1 className="graduate-regular text-danger fw-bold">Home</h1>
-
-      <a href="/subject" className="btn bg-dark text-light" >Search by Subject</a>
-      {userData && <BookListings bookData={bookData} userData={userData} page={"Home"}/>
-      }
-      
-    </div>
-  )
+  return <div className="text-center zilla-slab-regular">{renderLogin()}</div>;
 }
 
 export default Home;
