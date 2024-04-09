@@ -9,35 +9,35 @@ function Home() {
   const { loading, data } = useQuery(QUERY_ALL_BOOKS);
   const bookData = data?.books || [];
 
-  const { userData, userId, refetch } = queryUser();
+  const {userData, userId, refetch} = queryUser();
+  // console.log(bookData)
 
-  function loginDisplay() {
-    if (Auth.loggedIn()) {
-      return (
-        <div>
-          <h1>Home</h1>
-          <a href="/subject" className="btn btn-secondary">
-            Search by Subject
-          </a>
-          {userData && (
-            <BookListings
-              bookData={bookData}
-              userData={userData}
-              page={"Home"}
-            />
-          )}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Login />
-        </div>
-      );
-    }
-  }
+  // const [bookData, setBookData] = useState({
 
-  return <div>{loginDisplay()}</div>;
+  // });
+
+  // const getBookData = async () => {
+
+  //   try {
+  //   const { bookData } = await allBooks({
+  //     variables: {bookData: books}
+  //   });
+  //   console.log("Testing!")
+  // } catch (err) {
+  //   console.error(err);
+  // }
+  // }
+
+  return (
+    <div className="text-center zilla-slab-regular">
+      <h1 className="graduate-regular text-danger fw-bold">Home</h1>
+
+      <a href="/subject" className="btn bg-dark text-light" >Search by Subject</a>
+      {userData && <BookListings bookData={bookData} userData={userData} page={"Home"}/>
+      }
+      
+    </div>
+  )
 }
 
 export default Home;

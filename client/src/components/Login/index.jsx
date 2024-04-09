@@ -32,9 +32,9 @@ function Login() {
   };
 
   return (
-    <div className="card">
+    <div className="card zilla-slab-regular">
       <div className="card-body">
-        <h4 className="card-title mb-3">Login</h4>
+        <h3 className="card-title mb-3 graduate-regular text-danger">Login</h3>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-3">
             <label htmlFor="emailInput" className="form-label">
@@ -60,7 +60,7 @@ function Login() {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn bg-dark text-light">
             Submit
           </button>
         </form>
