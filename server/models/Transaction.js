@@ -17,6 +17,10 @@ const transactionSchema = new Schema({
     book: {
         type: Schema.Types.ObjectId,
         ref: 'book'
+    },
+    price: {
+        type: Number,
+        default: "",
     }
   });
   

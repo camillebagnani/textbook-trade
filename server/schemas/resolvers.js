@@ -153,6 +153,7 @@ const resolvers = {
             sellerId: args.sellerId,
             buyerId: context.user._id,
             book: args.book,
+            price: args.price
           }
         );
         console.log(newTransaction);

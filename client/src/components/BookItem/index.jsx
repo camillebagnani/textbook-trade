@@ -51,6 +51,7 @@ function BookItem(props) {
   const handleAddTransaction = async (event) => {
     const bookId = props.bookData._id;
     const sellerId = props.bookData.user._id;
+    const price = props.bookData.price
     console.log(bookId);
     console.log(sellerId);
     event.preventDefault();
@@ -60,6 +61,7 @@ function BookItem(props) {
         variables: {
           sellerId: sellerId,
           book: bookId,
+          price: price
         },
       });
       setSubmitted(true);
