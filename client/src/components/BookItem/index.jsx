@@ -75,8 +75,6 @@ function BookItem(props) {
       style={{ display: "block", position: "initial" }}
     >
       <Container>
-        <h1 className="graduate-regular text-danger fw-bold">Book for Trade</h1>
-
         <h2>{props.bookData.title}</h2>
         <img src={props.bookData.image} alt={props.bookData.title} />
         <h3>Authors: {props.bookData.authors}</h3>
